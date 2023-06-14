@@ -1,0 +1,232 @@
+<!--<div style="text-align:center">-->
+<!--  <h1 class="card-header bg-info" align="center">-->
+<!--    Welcome to {{ title }}!-->
+<!--  </h1>-->
+<!--  <h3 class="text-secondary" align="center">-->
+<!--    PEV Selling Countries-->
+<!--  </h3>-->
+<!--  <div class="row ml-5">-->
+<!--    <div class="col">-->
+<!--      <div class="row" align="center">-->
+<!--        <h4>-->
+<!--          Vertical Bar Chart-->
+<!--        </h4>-->
+<!--      </div>-->
+<!--      <div class="row" align="center">-->
+<!--        <ngx-charts-bar-vertical-->
+<!--          [view]="view"-->
+<!--          [scheme]="colorScheme"-->
+<!--          [results]="single"-->
+<!--          [gradient]="gradient"-->
+<!--          [xAxis]="showXAxis"-->
+<!--          [yAxis]="showYAxis"-->
+<!--          [legend]="showLegend"-->
+<!--          [showXAxisLabel]="showXAxisLabel"-->
+<!--          [showYAxisLabel]="showYAxisLabel"-->
+<!--          [xAxisLabel]="xAxisLabel"-->
+<!--          [yAxisLabel]="yAxisLabel">-->
+<!--        </ngx-charts-bar-vertical>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col">-->
+<!--      <div class="row" align="center">-->
+<!--        <h4>-->
+<!--          Vertical Bar Chart Normalized-->
+<!--        </h4>-->
+<!--      </div>-->
+<!--      <div class="row" align="center">-->
+<!--        <ngx-charts-bar-vertical-normalized-->
+<!--          [view]="view"-->
+<!--          [scheme]="colorScheme"-->
+<!--          [results]="multi"-->
+<!--          [gradient]="gradient"-->
+<!--          [xAxis]="showXAxis"-->
+<!--          [yAxis]="showYAxis"-->
+<!--          [legend]="showLegend"-->
+<!--          [showXAxisLabel]="showXAxisLabel"-->
+<!--          [showYAxisLabel]="showYAxisLabel"-->
+<!--          [xAxisLabel]="xAxisLabel"-->
+<!--          [yAxisLabel]="yAxisLabel">-->
+<!--        </ngx-charts-bar-vertical-normalized>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row ml-5" align="center">-->
+<!--  <h4>-->
+<!--    Stacked Vertical Bar Chart-->
+<!--  </h4>-->
+<!--</div>-->
+<!--<div class="form-group row ml-5" align="center">-->
+<!--  <ngx-charts-bar-vertical-stacked-->
+<!--    [view]="view"-->
+<!--    [scheme]="colorScheme"-->
+<!--    [results]="multi"-->
+<!--    [gradient]="gradient"-->
+<!--    [xAxis]="showXAxis"-->
+<!--    [yAxis]="showYAxis"-->
+<!--    [legend]="showLegend"-->
+<!--    [showXAxisLabel]="showXAxisLabel"-->
+<!--    [showYAxisLabel]="showYAxisLabel"-->
+<!--    [xAxisLabel]="xAxisLabel"-->
+<!--    [yAxisLabel]="yAxisLabel">-->
+<!--  </ngx-charts-bar-vertical-stacked>-->
+<!--</div>-->
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <a routerLink="/dashboard" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+          <img src="../assets/img/favicon-32x32.png" alt="" srcset="">
+        </a>
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/offres-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard" >
+              <i class="bi bi-box-arrow-in-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/stages" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders" data-bs-original-title="addMark">
+              <i class="bi bi-card-list fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/session" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-calendar-date fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/chart" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-clipboard2-data-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/projets" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-person-workspace fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/new-projet" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-circle-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/validate-offre" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-check-square-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+            <a routerLink="/affectation" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-arrow-left-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/docs" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-file-text-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-square-fill fs-3"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi-people fs-3"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100">
+      <div class="card">
+        <div style="text-align:center">
+          <div class="row ml-4">
+            <div class="col-sm-6">
+              <div class="row" align="center">
+                <h4>
+                  Vertical Bar Chart
+                </h4>
+              </div>
+              <div class="row" align="center">
+                <ngx-charts-bar-vertical
+                  [view]="view"
+                  [scheme]="colorScheme"
+                  [results]="single"
+                  [gradient]="gradient"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [legend]="showLegend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel">
+                </ngx-charts-bar-vertical>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="row" align="center">
+                <h4>
+                  Vertical Bar Chart Normalized
+                </h4>
+              </div>
+              <div class="row" align="center">
+                <ngx-charts-bar-vertical-normalized
+                  [view]="view"
+                  [scheme]="colorScheme"
+                  [results]="multi"
+                  [gradient]="gradient"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [legend]="showLegend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel">
+                </ngx-charts-bar-vertical-normalized>
+              </div>
+            </div>
+          </div>
+          <div class="row ml-5 mt-3" align="center">
+            <h4>
+              Stacked Vertical Bar Chart
+            </h4>
+          </div>
+          <div class="row ml-5" align="center">
+            <div class="col-sm-12">
+              <ngx-charts-bar-vertical-stacked
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+              </ngx-charts-bar-vertical-stacked>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-auto bg-light sticky-top">
+          <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+
+              <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                  <li class="nav-item">
+                      <a routerLink="/dashboard" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+                          <i class="bi-house fs-3"></i>
+                      </a>
+                  </li>
+                  <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+                      <a routerLink="/offres-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard" >
+                        <i class="bi bi-box-arrow-in-right fs-3"></i>
+                      </a>
+                  </li>
+                  <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+                      <a routerLink="/stages" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders" data-bs-original-title="addMark">
+                        <i class="bi bi-card-list fs-3"></i>
+                      </a>
+                  </li>
+                <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+                  <a routerLink="/session" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-calendar-date fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ADMIN')">
+                  <a routerLink="/chart" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-clipboard2-data-fill fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+                  <a routerLink="/projets" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-person-workspace fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+                  <a routerLink="/forum" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-plus-circle-fill fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ADMIN')">
+                  <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-list-ul fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ADMIN')">
+                  <a routerLink="/validate-offre" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-check-square-fill fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+                  <a routerLink="/affectation" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-arrow-left-right fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+                  <a routerLink="/docs" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-file-text-fill fs-3"></i>
+                  </a>
+                </li>
+                <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+                  <a routerLink="/stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-plus-square-fill fs-3"></i>
+                  </a>
+                </li>
+
+                  <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="bi-people fs-3"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+                      <a class="dropdown-item" href="#" (click)="handleProfile()">Profile</a>
+                    </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="col-sm p-3 min-vh-100">
+          <!--dashboard content -->
+          <section>
+            <div class="row">
+              <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                      <div class="align-self-center">
+                        <i class="bi bi-buildings-fill text-info fa-3x"></i>
+                      </div>
+                      <div class="text-end">
+                        <h3>278</h3>
+                        <p class="mb-0">Stages</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                      <div class="align-self-center">
+                        <i class="bi bi-megaphone-fill text-warning fa-3x"></i>
+                      </div>
+                      <div class="text-end">
+                        <h3>156</h3>
+                        <p class="mb-0">Offres de stage</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                      <div class="align-self-center">
+                        <i class="bi bi-person-fill text-success fa-3x"></i>
+                      </div>
+                      <div class="text-end">
+                        <h3>410</h3>
+                        <p class="mb-0">Etudiants</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                      <div class="align-self-center">
+                        <i class="bi bi-book-fill text-danger fa-3x"></i>
+                      </div>
+                      <div class="text-end">
+                        <h3>43</h3>
+                        <p class="mb-0">Projets</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </section>
+
+        <div style="display: flex; justify-content: center;">
+          <div class="card">
+            <div class="card-body" style="max-width: 300px;">
+              <img src="favicon.ico" style="display: block; margin: 0 auto;">
+              <span style="display: block; text-align: center; font-size: 24px; font-weight: bold; margin-top: 10px;">Platforme de gestion de stage</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+
+</div>

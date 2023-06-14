@@ -1,0 +1,274 @@
+<!--<div class="container">-->
+<!--  <button (click)="goToAdd()" class="btn btn-info" style="margin-right: 8px">-->
+<!--    <i class="bi bi-pencil-square"></i>-->
+<!--  </button>-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--      <div *ngIf="offresDeStage" class="text-center">-->
+<!--        <h2>Liste des offres de stage</h2>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <table class="table">-->
+<!--          <thead class="text-white bg-dark">-->
+<!--          <tr>-->
+<!--            <th>Date de début</th>-->
+<!--            <th>Date de fin</th>-->
+<!--            <th>Poste</th>-->
+<!--            <th>Entreprise</th>-->
+<!--            <th>Actions</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor="let offreDeStage of offresDeStage">-->
+<!--            <td>{{ offreDeStage.dateDebut | date }}</td>-->
+<!--            <td>{{ offreDeStage.dateFin | date }}</td>-->
+<!--            <td>{{ offreDeStage.poste }}</td>-->
+<!--            <td>{{ offreDeStage.entreprise }}</td>-->
+
+<!--            <td>-->
+<!--              <div class="btn-group">-->
+<!--                <button (click)="goToDetails(offreDeStage)" class="btn btn-success" style="margin-right: 8px">-->
+<!--                  <i class="bi bi-book"></i>-->
+<!--                </button>-->
+<!--                <button (click)="handleDeleteButton(offreDeStage)" style="margin-right: 8px" class="btn btn-danger">-->
+<!--                  <i class="bi bi-trash"></i>-->
+<!--                </button>-->
+<!--                <button (click)="goToUpdate(offreDeStage)" class="btn btn-warning" style="margin-right: 8px">-->
+<!--                  <i class="bi bi-pencil-square"></i>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/offres-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard" >
+              <i class="bi bi-box-arrow-in-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/stages" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders" data-bs-original-title="addMark">
+              <i class="bi bi-card-list fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/session" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-calendar-date fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/chart" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-clipboard2-data-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/projets" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-person-workspace fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/new-projet" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-circle-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/validate-offre" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-check-square-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+            <a routerLink="/affectation" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-arrow-left-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/docs" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-file-text-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-square-fill fs-3"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi-people fs-3"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100">
+      <div class="card">
+        <div class="row" align="center">
+          <h4>
+            Les offres de stage
+          </h4>
+        </div>
+      </div>
+      <br>
+      <!--Student-list content-->
+      <div class="container">
+        <!-- Search -->
+        <div class="input-group">
+          <div class="ms-2"></div>
+
+          <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchOffresStageByPoste()">
+            <div class="input-group">
+              <label class="input-group-text">Poste</label>
+              <input type="text" formControlName="keyword" class="form-control">
+              <!-- Stocker dans le variable keyword de l'objet searchFormGroup -->
+              <button class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="m-2 ms-5"></div>
+          <div class="ms-5"></div>
+
+          <form [formGroup]="searchFormGroup">
+            <div class="input-group">
+              <label class="input-group-text">Entreprise</label>
+              <input type="text" class="form-control">
+              <!-- Stocker dans le variable keyword de l'objet searchFormGroup -->
+              <button class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="m-2"></div>
+
+        <div class="input-group">
+          <form [formGroup]="searchFormGroup">
+            <div class="input-group">
+              <label class="input-group-text">technologie</label>
+              <input type="text" class="form-control">
+              <!-- Stocker dans le variable keyword de l'objet searchFormGroup -->
+              <button class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="ms-5"></div>
+          <div class="ms-5"></div>
+          <div class="ms-5"></div>
+          <div class="ms-5"></div>
+
+          <button (click)="Reset()" class="btn btn-outline-warning">
+            Réinitialiser
+          </button>
+        </div>
+        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+          <div>
+            <a (click)="goToAdd()" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary"><i
+              class="bx bx-plus me-1"></i>Ajouter</a>
+          </div>
+        </div>
+      </div>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+            integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+      <div class="container mt-3 mb-4" overflow-auto>
+        <div class="col-lg-14 mt-4 mt-lg-0">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm rounded-7">
+
+                <!-- List -->
+                <table class="table manage-students-top mb-0">
+                  <thead>
+                  <tr>
+                    <th class="text-center"><b>#</b></th>
+                    <th class="text-center"><b>Date de début</b></th>
+                    <th class="text-center"><b>Date de fin</b></th>
+                    <th class="text-center"><b>Poste</b></th>
+                    <th class="text-center"><b>Technologie</b></th>
+                    <th class="text-center"><b>Entreprise</b></th>
+                    <th class="action text-right"><b>Action</b></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="students-list" *ngFor="let offreDeStage of offresDeStage; let i = index">
+                    <td class="text-center">
+                      {{i+1}}
+                    </td>
+                    <td class="text-center">{{ offreDeStage.dateDebut | date }}</td>
+                    <td class="text-center">{{ offreDeStage.dateFin | date }}</td>
+                    <td class="text-center">{{ offreDeStage.poste }}</td>
+                    <td class="text-center">{{ offreDeStage.technologie }}</td>
+                    <td class="text-center">{{ offreDeStage.entreprise }}</td>
+                    <td class="text-center">
+                      <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                        <li><span id="boot-icon" class="bi bi-trash-fill"
+                                  style="font-size: 1.2rem; color: rgb(255, 0, 0);" (click)="handleDeleteButton(offreDeStage)"></span></li>
+                        &nbsp;<li><span id="boot-icon" class="bi bi-pencil-fill"
+                                        style="font-size: 1.2rem; color: rgb(73, 219, 32);" (click)="goToUpdate(offreDeStage)"></span></li>
+                        &nbsp;<li><span id="boot-icon" class="bi bi-eye-fill"
+                                        style="font-size: 1.2rem; color:cornflowerblue;" (click)="goToDetails(offreDeStage)"></span></li>
+                      </ul>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div class="row g-0 align-items-center pb-4 my-3">
+                  <div class="col-sm-6">
+                    <div>
+                      <p class="mb-sm-0">Affichage de 1 a 10</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="float-sm-end">
+                      <ul class="pagination mb-sm-0">
+                        <li class="page-item disabled">
+                          <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item">
+                          <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

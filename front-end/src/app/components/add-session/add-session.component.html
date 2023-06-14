@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card col-md-6 offset-3">
+    <div class="card-header bg-dark text-white text-center">
+      Add Session
+    </div>
+    <div class="card-body">
+      <form [formGroup]="newSessionFormGroup" (ngSubmit)="addSession()">
+        <div class="mb-3">
+          <div class="mb-3">
+            <label class="form-label">Date:</label>
+            <input type="date" formControlName="date" class="form-control">
+            <span class="text-danger" *ngIf="newSessionFormGroup.controls['date'].touched && newSessionFormGroup.controls['date'].errors && newSessionFormGroup.controls['date'].errors['required']">
+              Start Date is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" formControlName="description" class="form-control">
+            <span class="text-danger" *ngIf="newSessionFormGroup.controls['description'].touched && newSessionFormGroup.controls['description'].errors && newSessionFormGroup.controls['description'].errors['required']">
+              End Date is required
+            </span>
+          </div>
+          <button [disabled]="!newSessionFormGroup.valid" class="btn btn-success mt-3">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

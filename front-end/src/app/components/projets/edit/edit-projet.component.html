@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-2">
+    <div class="card-header">
+      <div class="display-5">Modifier Le Projet</div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="editProjetFormGroup" (ngSubmit)="handleUpdateCustomer()">
+        <div class="mb-3">
+          <label class="form-label">ID : </label>
+          <label class="form-label">{{projet.id}}</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Intitule</label>
+          <input type="text" formControlName="intitule" class="form-control">
+          <small *ngIf="editProjetFormGroup.controls['intitule'].errors && editProjetFormGroup.controls['intitule'].touched"
+                 class="text-danger">
+            {{projetsService.getErrorMsgName('intitule', editProjetFormGroup.controls['intitule'].errors)}}
+          </small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <input type="text" formControlName="description" class="form-control">
+          <small *ngIf="editProjetFormGroup.controls['description'].errors && editProjetFormGroup.controls['description'].touched"
+                 class="text-danger">
+            {{projetsService.getErrorMsgName('description', editProjetFormGroup.controls['description'].errors)}}
+          </small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Path</label>
+          <input type="text" formControlName="path" class="form-control">
+          <small *ngIf="editProjetFormGroup.controls['path'].errors && editProjetFormGroup.controls['path'].touched"
+                 class="text-danger">
+            {{projetsService.getErrorMsgName('path', editProjetFormGroup.controls['path'].errors)}}
+          </small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Stage</label>
+          <input type="text" formControlName="stageDTO" class="form-control">
+          <small *ngIf="editProjetFormGroup.controls['stageDTO'].errors && editProjetFormGroup.controls['stageDTO'].touched"
+                 class="text-danger">
+            {{projetsService.getErrorMsgName('stageDTO', editProjetFormGroup.controls['stageDTO'].errors)}}
+          </small>
+        </div>
+        <!--<div class="mb-3">
+          <label class="form-label">Stage</label>
+          <input type="text" formControlName="stageDTO" class="form-control">
+          <small *ngIf="editProjetFormGroup.controls['stageDTO'].errors && editProjetFormGroup.controls['stageDTO'].touched"
+                 class="text-danger">
+            {{projetsService.getErrorMsgName('stageDTO', editProjetFormGroup.controls['stageDTO'].errors)}}
+          </small>
+        </div>-->
+        <button [disabled]="editProjetFormGroup.invalid" class="btn btn-info">Update</button>
+      </form>
+    </div>
+  </div>
+</div>

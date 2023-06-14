@@ -1,0 +1,145 @@
+<!--<div class="container mt-4">-->
+<!--  <div class="card">-->
+<!--    <div class="card-header text-bg-info h4">{{ offreDeStage.poste }}</div>-->
+<!--    <div class="card-body">-->
+<!--      <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>ID</th>-->
+<!--          <th>Poste</th>-->
+<!--          <th>Entreprise</th>-->
+<!--          <th>Description</th>-->
+<!--          <th>Date de début</th>-->
+<!--          <th>Date de fin</th>-->
+<!--          <th>Technologie</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--          <td>{{ offreDeStage.id }}</td>-->
+<!--          <td>{{ offreDeStage.poste }}</td>-->
+<!--          <td>{{ offreDeStage.entreprise }}</td>-->
+<!--          <td>{{ offreDeStage.description }}</td>-->
+<!--          <td>{{ offreDeStage.dateDebut }}</td>-->
+<!--          <td>{{ offreDeStage.dateFin }}</td>-->
+<!--          <td>{{ offreDeStage.technologie }}</td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/offres-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard" >
+              <i class="bi bi-box-arrow-in-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/stages" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders" data-bs-original-title="addMark">
+              <i class="bi bi-card-list fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/session" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-calendar-date fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/chart" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-clipboard2-data-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/projets" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-person-workspace fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/new-projet" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-circle-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/validate-offre" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-check-square-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+            <a routerLink="/affectation" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-arrow-left-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/docs" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-file-text-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-square-fill fs-3"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi-people fs-3"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100">
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-header text-bg-info h4">{{ offreDeStage.poste }}</div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Poste</th>
+              <th>Entreprise</th>
+              <th>Description</th>
+              <th>Date de début</th>
+              <th>Date de fin</th>
+              <th>Technologie</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{ offreDeStage.id }}</td>
+              <td>{{ offreDeStage.poste }}</td>
+              <td>{{ offreDeStage.entreprise }}</td>
+              <td>{{ offreDeStage.description }}</td>
+              <td>{{ offreDeStage.dateDebut }}</td>
+              <td>{{ offreDeStage.dateFin }}</td>
+              <td>{{ offreDeStage.technologie }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

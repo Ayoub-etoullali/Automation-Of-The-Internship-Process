@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/acceuil">Accueil</a>
+        </li>
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ETUDIANT')">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/offres-stage">Offres de stage</a>
+        </li>
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ETUDIANT')">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/stages">stage</a>
+        </li>
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ADMIN')">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/encadrant-etudiant">les etudiants</a>
+        </li>
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/calendar">calendar</a>
+        </li>
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ENCADRANT')">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/session">les sessions</a>
+        </li>
+        <li class="nav-item" *ngIf="roles!=null && roles.includes('ADMIN')">
+          <a class="nav-link active" aria-current="page" routerLink="/navbar/chart">Chart</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="roles!=null && roles.includes('ETUDIANT')">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Projets
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/navbar/projets">Search Projets</a></li>
+            <li><a class="dropdown-item" routerLink="/navbar/new-projet">New Projets</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" *ngIf="roles!=null && roles.includes('ADMIN')">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Offres de stage
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/navbar/offre-de-stage">Les offres de stage</a></li>
+            <li><a class="dropdown-item" routerLink="/navbar/validate-offre">Valider les offres de stage</a></li>
+          </ul>
+        </li>
+      </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/navbar/etudiant">Espace Etudiant</a>
+          </li>
+          <!-- logout -->
+          <li>
+            <a class="btn nav-link" (click)="handleLogout()">
+              <i class="bi bi-box-arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+    </ul>
+  </ul>
+</nav>
+<router-outlet>
+
+</router-outlet>

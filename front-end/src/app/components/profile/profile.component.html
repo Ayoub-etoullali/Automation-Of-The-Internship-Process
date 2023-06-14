@@ -1,0 +1,141 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi-people fs-3"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+              <a class="dropdown-item" href="#" (click)="handleProfile()">Profile</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100">
+      <!--add-student content -->
+      <section style="background-color: white;" class="rounded-7">
+        <i class="bi bi-arrow-left my-3 p-3" style="font-size: 2.5rem;" routerLink="/studentList"></i>
+        <div class="container py-1">
+
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center">
+                  <img src="favicon.ico" alt="avatar"
+                       class="rounded-circle img-fluid" style="width: 150px;">
+                  <h5 class="my-3">PARK Jimin</h5>
+                  <p class="text-muted mb-1 badge badge-warning">Big Data and Cloud Computing</p>
+                  <p class="text-muted mb-4"><i class="bi bi-geo-alt-fill" style="color:rgb(20, 199, 74)"></i>Seoul, South Korea</p>
+                  <div class="d-flex justify-content-center mb-2">
+                    <!-- Edit -->
+                    <button (click)="Edit()" class="btn btn-primary align-content-center">
+                      <i class="bi bi-pencil"> Editer</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <p class="mb-0">Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Jimin</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Surname</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">PARK</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Age</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">28</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Gender</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Male</p>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Proffesion</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Big Data and Cloud Computing</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">pj-gmail.com</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">0679639829</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Seoul, South Korea</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-11">
+                  <div class="card-body rounded-7">
+                    <img src="https://img.freepik.com/premium-vector/guy-running-upward-graphic-with-phone-headphones-isolated-white-background_323758-148.jpg?w=1380"
+                         class="img-fluid" alt="Sample image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

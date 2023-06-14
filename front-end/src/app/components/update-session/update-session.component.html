@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+<br>
+      <br>
+      <br>
+      <br>
+  <div style="text-align: center" class="card col-md-5 offset-3">
+    <div class="card-header bg-dark text-white text-center">
+      Update Session
+    </div>
+    <div class="card-body">
+      <form [formGroup]="updateFormGroup" (ngSubmit)="update()">
+        <div class="mb-3">
+          <div class="mb-3">
+            <label class="form-label">Date:</label>
+            <input type="text" formControlName="dateDebut" class="form-control">
+            <span class="text-danger" *ngIf="updateFormGroup.controls['date'].touched
+          && updateFormGroup.controls['date'].errors
+          && updateFormGroup.controls['date'].errors['required']">
+              Date début is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description:</label>
+            <input type="text" formControlName="dateFin" class="form-control">
+            <span class="text-danger" *ngIf="updateFormGroup.controls['description'].touched
+          && updateFormGroup.controls['description'].errors
+          && updateFormGroup.controls['description'].errors['required']">
+              Date fin is required
+            </span>
+          </div>
+          <button [disabled]="!updateFormGroup.valid" class="btn btn-success mt-3">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+  </div>
+</div>

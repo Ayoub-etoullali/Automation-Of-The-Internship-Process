@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="card col-md-8 offset-2 mt-2">
+    <div class="card-header">
+      <div class="display-6">Modifier mes informations personnels</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body">
+        <form [formGroup]="editEtudiantFormGroup" (ngSubmit)="handleUpdateProjet()">
+          <div class="mb-3">
+            <label class="form-label">ID : </label>
+            <label class="form-label">{{etudiant.id}}</label>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input type="text" formControlName="nom" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Prenom</label>
+            <input type="text" formControlName="prenom" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" formControlName="username" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">password</label>
+            <input type="text" formControlName="password" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" formControlName="email" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Telephone</label>
+            <input type="text" formControlName="telephone" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Adresse</label>
+            <input type="text" formControlName="adresse" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Filiere</label>
+            <input type="text" formControlName="filiere" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">CNI</label>
+            <input type="text" formControlName="cin" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">CNE</label>
+            <input type="text" formControlName="cne" class="form-control">
+          </div>
+
+          <button [disabled]="editEtudiantFormGroup.invalid" class="btn btn-info">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>

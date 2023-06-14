@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-2">
+    <div class="card-header">Créer un stage</div>
+    <div class="card-body">
+      <form [formGroup]="createStageFormGroup" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label class="form-label">Titre</label>
+          <input type="text" formControlName="titre" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <input type="text" formControlName="description" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Unité d'accueil</label>
+          <input type="text" formControlName="utite_d_accueil" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Date de début</label>
+          <input type="date" formControlName="date_debut" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Date de fin</label>
+          <input type="date" formControlName="date_fin" class="form-control">
+        </div>
+
+        <button [disabled]="createStageFormGroup.invalid" class="btn btn-info">Créer</button>
+      </form>
+    </div>
+  </div>
+</div>

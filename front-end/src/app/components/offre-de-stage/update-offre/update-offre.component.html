@@ -1,0 +1,251 @@
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--      <br>-->
+<!--      <br>-->
+<!--      <br>-->
+<!--      <br>-->
+<!--      <div style="text-align: center" class="card col-md-5 offset-3">-->
+<!--        <div class="card-header bg-dark text-white text-center">-->
+<!--          Update Offre de Stage-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <form [formGroup]="updateFormGroup" (ngSubmit)="update()">-->
+<!--            <div class="mb-3">-->
+<!--              <div class="mb-3">-->
+<!--                <label class="form-label">Poste:</label>-->
+<!--                <input type="text" formControlName="poste" class="form-control">-->
+<!--                <span class="text-danger" *ngIf="updateFormGroup.controls['poste'].touched-->
+<!--                  && updateFormGroup.controls['poste'].errors-->
+<!--                  && updateFormGroup.controls['poste'].errors['required']">-->
+<!--                  Poste is required-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <div class="mb-3">-->
+<!--                <label class="form-label">Entreprise:</label>-->
+<!--                <input type="text" formControlName="entreprise" class="form-control">-->
+<!--                <span class="text-danger" *ngIf="updateFormGroup.controls['entreprise'].touched-->
+<!--                  && updateFormGroup.controls['entreprise'].errors-->
+<!--                  && updateFormGroup.controls['entreprise'].errors['required']">-->
+<!--                  Entreprise is required-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <div class="mb-3">-->
+<!--                <label class="form-label">Description:</label>-->
+<!--                <input type="text" formControlName="description" class="form-control">-->
+<!--                <span class="text-danger" *ngIf="updateFormGroup.controls['description'].touched-->
+<!--                  && updateFormGroup.controls['description'].errors-->
+<!--                  && updateFormGroup.controls['description'].errors['required']">-->
+<!--                  Description is required-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <div class="mb-3">-->
+<!--                <label class="form-label">Date de début:</label>-->
+<!--                <input type="text" formControlName="dateDebut" class="form-control">-->
+<!--                <span class="text-danger" *ngIf="updateFormGroup.controls['dateDebut'].touched-->
+<!--                  && updateFormGroup.controls['dateDebut'].errors-->
+<!--                  && updateFormGroup.controls['dateDebut'].errors['required']">-->
+<!--                  Date de début is required-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <div class="mb-3">-->
+<!--                <label class="form-label">Date de fin:</label>-->
+<!--                <input type="text" formControlName="dateFin" class="form-control">-->
+<!--                <span class="text-danger" *ngIf="updateFormGroup.controls['dateFin'].touched-->
+<!--                  && updateFormGroup.controls['dateFin'].errors-->
+<!--                  && updateFormGroup.controls['dateFin'].errors['required']">-->
+<!--                  Date de fin is required-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <div class="mb-3">-->
+<!--                <label class="form-label">Technologie:</label>-->
+<!--                <input type="text" formControlName="technologie" class="form-control">-->
+<!--                <span class="text-danger" *ngIf="updateFormGroup.controls['technologie'].touched-->
+<!--                  && updateFormGroup.controls['technologie'].errors-->
+<!--                  && updateFormGroup.controls['technologie'].errors['required']">-->
+<!--                  Technologie is required-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <button [disabled]="!updateFormGroup.valid" class="btn btn-success mt-3">Save</button>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/offres-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard" >
+              <i class="bi bi-box-arrow-in-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/stages" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders" data-bs-original-title="addMark">
+              <i class="bi bi-card-list fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/session" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-calendar-date fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/chart" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-clipboard2-data-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/projets" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-person-workspace fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/new-projet" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-circle-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/validate-offre" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-check-square-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+            <a routerLink="/affectation" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-arrow-left-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/docs" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-file-text-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-square-fill fs-3"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi-people fs-3"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm p-3 min-vh-100">
+      <!--add-student content -->
+      <section class="vh-100">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Modifier un offre de stage</p>
+                      <!--input controls -->
+                      <form class="mx-1 mx-md-4" [formGroup]="updateFormGroup" (ngSubmit)="update()">
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" class="form-control" formControlName="poste">
+<!--                            <label class="form-label">Poste</label>-->
+                            <span class="text-danger" *ngIf="updateFormGroup.controls['poste'].touched && updateFormGroup.controls['poste'].errors && updateFormGroup.controls['poste'].errors['required']">Poste is required</span>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" class="form-control" name="last_name" formControlName="entreprise"/>
+<!--                            <label class="form-label">Entreprise</label>-->
+                            <span class="text-danger" *ngIf="updateFormGroup.controls['entreprise'].touched && updateFormGroup.controls['entreprise'].errors && updateFormGroup.controls['entreprise'].errors['required']"> Entreprise is required</span>
+                           </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <textarea type="text" class="form-control" formControlName="description"></textarea>
+<!--                            <label class="form-label">Description</label>-->
+                            <span class="text-danger" *ngIf="updateFormGroup.controls['description'].touched && updateFormGroup.controls['description'].errors && updateFormGroup.controls['description'].errors['required']">Description is required</span>
+                           </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="date" class="form-control" formControlName="dateDebut"/>
+<!--                            <label class="form-label">Date Debut</label>-->
+                            <span class="text-danger" *ngIf="updateFormGroup.controls['dateDebut'].touched && updateFormGroup.controls['dateDebut'].errors && updateFormGroup.controls['dateDebut'].errors['required']"> Date de début is required</span>
+                           </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="date" class="form-control" formControlName="dateFin"/>
+<!--                            <label class="form-label">Date Fin</label>-->
+                            <span class="text-danger" *ngIf="updateFormGroup.controls['dateFin'].touched && updateFormGroup.controls['dateFin'].errors && updateFormGroup.controls['dateFin'].errors['required']"> Date de fin is required</span>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" class="form-control" formControlName="technologie"/>
+<!--                            <label class="form-label">Technologie</label>-->
+                            <span class="text-danger" *ngIf="updateFormGroup.controls['technologie'].touched && updateFormGroup.controls['technologie'].errors && updateFormGroup.controls['technologie'].errors['required']"> Technologie is required</span>
+                           </div>
+                        </div>
+
+                        <!--buttons -->
+
+                        <div class="d-flex justify-content-end pt-3 text-center">
+                          <button type="button" class="btn btn-light btn-lg" (click)="OnResetedForm()">Resetall</button>
+                          <button type="submit" [disabled]="!updateFormGroup.valid" class="btn btn-warning btn-lg ms-3">Modifier</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-md-10 col-lg-6 col-xl-7 d-inline-block align-items-center order-1 order-lg-2">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                           class="img-fluid" alt="Sample image">
+                      <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>

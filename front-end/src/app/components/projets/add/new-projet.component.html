@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-2">
+    <div class="card-header">
+      <div class="display-5">Ajouter un Projet</div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="newProjetFormGroup" (ngSubmit)="handleSaveCustomer()">
+        <div class="mb-3">
+          <label class="form-label">Intitule</label>
+          <input type="text" formControlName="intitule" class="form-control">
+          <small *ngIf="newProjetFormGroup.controls['intitule'].errors && newProjetFormGroup.controls['intitule'].touched"
+                 class="text-danger">
+            {{projetsService.getErrorMsgName('intitule', newProjetFormGroup.controls['intitule'].errors)}}  Name is
+            required
+          </small>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <input type="text" formControlName="description" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Path</label>
+          <input type="text" formControlName="path" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Stage</label>
+          <input type="text" formControlName="stageDTO" class="form-control">
+        </div>
+        <button [disabled]="newProjetFormGroup.invalid" class="btn btn-info">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

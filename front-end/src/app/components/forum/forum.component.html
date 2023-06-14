@@ -1,0 +1,130 @@
+<div class="container mt-2">
+
+  <div class="card">
+    <div class="card-header">
+      <h1 class="display-4">Forume</h1>
+    </div>
+  </div>
+
+  <div class="container page mt-2">
+    <div class="row">
+
+        <!-- Search -->
+        <div class="input-group">
+
+          <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchPostesByTitre()">
+
+            <div class="input-group">
+              <label class="input-group-text">Titre</label>
+              <input type="text" formControlName="keyword1" class="form-control">
+              <!-- Stocker dans le variable keyword de l'objet searchFormGroup -->
+              <button class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="m-2"></div>
+
+          <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchPostesByTags()">
+            <div class="input-group outp">
+
+              <label class="input-group-text">Tag</label>
+              <input type="text" formControlName="keyword" class="form-control">
+              <!-- Stocker dans le variable keyword de l'objet searchFormGroup -->
+              <button class="btn btn-outline-info">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="m-2"></div>
+
+          <button (click)="Reset()" class="btn btn-outline-warning">
+            Réinitialiser
+          </button>
+
+        </div>
+
+        <!-- Articles -->
+        <table class="table mt-4">
+          <thead style="background-color:#5a7785;">
+          <tr style="color:#090000;">
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Autheur</th>
+            <th>date</th>
+            <th>Tag</th>
+          </tr>
+          </thead>
+          <tbody class="tableb">
+          <tr style="color:#ffffff;" *ngFor="let o of PostesObservable | async"> <!-- &lt;!&ndash; async : [M2] subscribe&ndash;&gt;-->
+            <td> {{o.id}}</td>
+            <td> {{o.titre}}</td>
+            <td> {{o.autheur}} </td>
+            <td> {{o.date}} </td>
+            <td> #{{o.tag}} </td>
+
+            <!--              &lt;!&ndash; Details &ndash;&gt;-->
+            <td>
+              <button (click)="Details(o)" class="btn btn-info">
+                <i class="bi bi-list-task"> Details</i>
+              </button>
+            </td>
+          </tbody>
+        </table>
+
+        <!-- Commentaires -->
+        <div class="card">
+          <div class="card-header msg_head">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <div class="rounded-circle user_img text_inside_circle1">
+                </div>
+                <div class="rounded-circle user_img text_inside_circle1">
+                </div>
+              </div>
+              <div class="user_info">
+                Commentaires
+              </div>
+              <div class="video_cam">
+              </div>
+            </div>
+            <span id="action_menu_btn">
+            </span>
+          </div>
+          <div class="card-body msg_card_body">
+            commentaires...
+          </div>
+          <div class="card-footer">
+            <form>
+              <div class="input-group">
+                <div class="input-group-append">
+                </div>
+                <textarea name="" class="form-control type_msg" placeholder="Type your message..."
+                          formControlName="replymessage"></textarea>
+                <div class="input-group-append">
+                  <button mat-raised-button class="input-group-text send_btn m-2">
+                    <i class="fa fa-location-arrow">Envoyer</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="card mt-5">
+        <div class="card-header">
+          <p class="text-danger">Tags populaires</p>#Java
+          <div class="tag-list">
+            <!--            &lt;!&ndash; tags &ndash;&gt;-->
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>

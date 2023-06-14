@@ -1,0 +1,13 @@
+###
+POST http://localhost:9099/login
+Content-Type: application/json
+
+{
+  "username": "Khawla",
+  "password": "7777"
+}
+
+###
+GET http://localhost:9099/customers/1/accounts
+Accept: application/json
+Authorization: BangtanSonyeondan eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJZYXNzaW5lIiwicm9sZXMiOlsiQ1VTVE9NRVIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDkzL2xvZ2luIiwiZXhwIjoxNjU0NDM2NDYwfQ.jn0L7qhK1Ll6ag3nNVsvGq-swqVW7vPrTL2ItHIxx1U
