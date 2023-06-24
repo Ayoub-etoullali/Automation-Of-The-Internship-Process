@@ -23,4 +23,3 @@ La plateforme doit couvrir un processus qui se base sur les étapes suivantes :
 <kbd>Khawla ZAROUALI</kbd> 
 <kbd>Safa AZZOUZ</kbd> 
 <kbd>Tarhla LADKHAN</kbd> 
-# Internship-Management-Project
